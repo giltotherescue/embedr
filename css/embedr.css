@@ -5,9 +5,10 @@ body {
 .tweet_text {
   font-weight: bold;
   background-color: #CCE6FC;
-  width: 214px;
+  width: 210px;
   clear: both;
   padding: 7px;
+  margin-bottom: 10px;
   font-size: 0.9em;
 }
 .embed {
@@ -48,4 +49,8 @@ body {
 }
 #pinboard .span3 {
   margin: 20px 10px 0 0;
+}
+#pinboard .btn-warning {
+  width: 100%;
+  font-size: 1.4em;
 }
