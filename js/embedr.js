@@ -21,6 +21,7 @@ searchTweets = function(term, twitter_user) {
     twitter_api_url,
     function(data) {
       console.log("Retrieved " + data.length + " tweets");
+
       $.each(data, function(i, tweet) {
         // console.log(tweet);
 
@@ -43,7 +44,7 @@ searchTweets = function(term, twitter_user) {
             // Append html string to tweet_container div
             $('#pinboard').append(tweet_html);
 
-            $.each(urls, function(index, url){
+            $.each(urls, function(index, url) {
               $.embedly(url, {
                 maxWidth: 210,
                 wmode: 'transparent',
@@ -62,6 +63,12 @@ searchTweets = function(term, twitter_user) {
         }
       });
       $('#tweet_container .loading').remove();
+
+      // Load Masonry and refresh it every 1 second for the next 10 seconds
+      // This gives Embedly enough time to load everything on the page.
+      $('#pinboard').masonry();
+      var reloadInterval = setInterval(function() { $('#pinboard').masonry('reload'); }, 1000);
+      setInterval(function() { clearInterval(reloadInterval) }, 10000);
     }
   );
 };
